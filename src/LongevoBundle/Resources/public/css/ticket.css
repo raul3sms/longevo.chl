@@ -1,0 +1,17 @@
+.main-body {
+    margin: 0 auto;
+    display: table;
+    width: 60%;
+}
+
+.main-body textarea {
+    width: 100%;
+}
+
+table {
+    border: 1px solid black;
+    width: 99%;
+}
+td {
+    text-align: center;
+}

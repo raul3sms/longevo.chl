@@ -1,0 +1,49 @@
+{% extends 'LongevoBundle:Default:base.html.twig' %}
+
+{% block title %}Visualizar solicitação{% endblock %}
+
+{% block body %}
+    <div class="main-body">
+        <form class="form-inline" id="form_filter" action="" method="get">
+            <div class="form-group">
+                <label for="ticket_id">Solicitação</label>
+                <input type="text" class="form-control" id="ticket_id" name="ticket_id" placeholder="Número da Solicitação">
+            </div>
+            <button type="submit" class="btn btn-default">Procurar</button>
+        </form>
+
+        {% if showTicket %}
+            {% if not ticket %}
+                Ticket não encontrado
+            {% else %}
+                <h4>Sua solicitação</h4>
+                <table border="1">
+                    <tr>
+                        <th>N&ordm; Solicitação</th>
+                        <td>{{ ticket.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cliente</th>
+                        <td>{{ ticket.customer.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Titulo</th>
+                        <td>{{ ticket.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Observações</th>
+                        <td>{{ ticket.observation|nl2br }}</td>
+                    </tr>
+                    <tr>
+                        <th>Data da Solicitação</th>
+                        <td>{{ ticket.createdAt | date('d/m/Y')}}</td>
+                    </tr>
+                    <tr>
+                        <th>Última alteração</th>
+                        <td>{{ ticket.updatedAt | date('d/m/Y')}}</td>
+                    </tr>
+                </table>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    longevo.example:
+#        class: LongevoBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

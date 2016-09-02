@@ -1,0 +1,7 @@
+longevo:
+    resource: "@LongevoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+welcome:
+    path:   /
+    defaults:  { _controller: LongevoBundle:Ticket:open }

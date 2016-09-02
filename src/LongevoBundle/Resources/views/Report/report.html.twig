@@ -1,0 +1,59 @@
+{% extends "LongevoBundle:Default:base.html.twig" %}
+
+{% block title %}Relatório de chamados.{% endblock %}
+
+{% block body %}
+
+    <div class="main-body">
+        <form class="form-inline" id="form_filter" action="" method="get">
+            <div class="form-group">
+                <label for="exampleInputName2">E-Mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">Pedido</label>
+                <input type="text" class="form-control" id="order_id" name="order_id" placeholder="Número do Pedido">
+            </div>
+            <button type="submit" class="btn btn-default">Filtrar</button>
+            <button type="button" id="limpar" class="btn btn-default">Limpar</button>
+        </form>
+        <h4>Total de itens: {{ pagination.getTotalItemCount }}</h4>
+        <table border="1">
+            <tr>
+                <th>#TicketID</th>
+                <th>Titulo</th>
+                <th>Nome</th>
+                <th>E-Mail</th>
+                <th>Order ID</th>
+            </tr>
+            <tr>
+                {% if pagination.getTotalItemCount == 0 %}
+                    <td colspan="6">Sem tickets</td>
+                {% else %}
+                    {% for ticket in pagination %}
+                        <tr>
+                            <td>{{ ticket.ticket_id }}</td>
+                            <td>{{ ticket.title }}</td>
+                            <td>{{ ticket.name }}</td>
+                            <td>{{ ticket.email }}</td>
+                            <td>{{ ticket.order_id }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tr>
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+
+    {% block footer_javascripts %}
+        <script>
+            $('#limpar').click(function () {
+                $("#email").val('');
+                $("#order_id").val('');
+                $("#form_filter").submit();
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

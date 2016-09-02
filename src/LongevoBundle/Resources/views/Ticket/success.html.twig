@@ -1,0 +1,15 @@
+{% extends "LongevoBundle:Default:base.html.twig" %}
+
+{% block title %}LongevoBundle:Ticket:open{% endblock %}
+
+{% set followLink = path('ticket_follow', {'customerId':ticket.customer.id}) %}
+
+{% block body %}
+    Sua solicitação foi salva com sucesso! <br />
+    O número do seu ticket é: {{ ticket.id }}. Guarde esse número para acompanhar sua solicitação.<br />
+    Você também pode visualizar sua solicitação por este link abaixo: <br />
+    <a href="{{ followLink }}">http://meusite.com.br/{{ followLink }}</a>
+    <br />
+    <br />
+    Obrigado por entrar em contato conosco.
+{% endblock %}
